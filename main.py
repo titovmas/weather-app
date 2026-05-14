@@ -18,4 +18,11 @@ def main():
 
 
 if __name__ == "__main__":
-   main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        # This block will execute when pressed Ctrl+C or close the program
+        print("\nProgram closed by user. Goodbye!")
+    except EOFError:
+        # This block will execute when pressed Ctrl+D
+        print("\nInput interrupted. Exiting...")
