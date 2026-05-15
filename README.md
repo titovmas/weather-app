@@ -24,5 +24,5 @@ A stylish Python command-line application that fetches real-time weather data us
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/weather-app.git](https://github.com/yourusername/weather-app.git)
+   git clone [https://github.com/titovmas/weather-app.git](https://github.com/titovmas/weather-app.git)
    cd weather-app
