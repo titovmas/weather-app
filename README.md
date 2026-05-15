@@ -58,6 +58,7 @@ A stylish Python command-line application that fetches real-time weather data us
 
 ## 🏃 Running the App
 After configuration, simply run:
+
     ```bash
     python3 main.py
     ```
