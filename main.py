@@ -7,6 +7,12 @@ import rich.panel
 import rich.box
 import rich.console
 
+# Load environment variables from the .env file
+dotenv.load_dotenv()
+
+# Get the API key from environment variables
+API_KEY = os.getenv("WEATHER_API_KEY")
+
 # Create console object for managing console
 console = rich.console.Console()
 
@@ -15,6 +21,7 @@ def display_weather(data, city_name):
         return
 
     # Extract data
+    current_time = data["current"]["observation_time"]
     temperature_c = data["current"]["temperature"]
     temperature_f = round(data["current"]["temperature"] * 1.8 + 32, 2)
     description = data["current"]["weather_descriptions"][0]
@@ -25,12 +32,15 @@ def display_weather(data, city_name):
     # Create a table for the data
     table = rich.table.Table(show_header=False, box=rich.box.ROUNDED, border_style="cyan")
 
+    # Add row with data
+    table.add_row("[bold yellow]Time:[/]", f"[white]{current_time}[/]")
     table.add_row("[bold yellow]Condition:[/]", f"[white]{description}[/]")
     table.add_row("[bold yellow]Temperature:[/]", f"[bold magenta]{temperature_c}°C[/] ({temperature_f:.1f}°F)")
     table.add_row("[bold yellow]Feels like:[/]", f"{feels_like}°C")
     table.add_row("[bold yellow]Wind speed:[/]", f"{wind_speed} km/h")
     table.add_row("[bold yellow]Humidity:[/]", f"{humidity}%")
 
+    # Wrap the table in a panel with title
     panel = rich.panel.Panel(
         table,
         title=f"[bold green]Weather report: {city_name.capitalize()}[/]",
@@ -40,11 +50,6 @@ def display_weather(data, city_name):
 
     console.print(panel)
 
-# Load environment variables from the .env file
-dotenv.load_dotenv()
-
-# Get the API key from environment variables
-API_KEY = os.getenv("WEATHER_API_KEY")
 
 def get_weather(city_name):
     if not API_KEY:
