@@ -26,3 +26,35 @@ A stylish Python command-line application that fetches real-time weather data us
    ```bash
    git clone [https://github.com/titovmas/weather-app.git](https://github.com/titovmas/weather-app.git)
    cd weather-app
+
+2. **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+
+3. **Configuration & Environment Setup**
+    This application follows industry best practices by separating configuration from the source code using environment variables.
+
+    1. Creating the Environment File
+    The program is designed to automatically detect and load credentials from a file named .env located in the project's root directory.
+
+    To set up your environment:
+
+    Create the .env file using the terminal:
+
+    ```bash
+    touch .env
+
+    Define your API key by adding the following line to the file:
+
+    WEATHER_API_KEY=your_access_key_here
+    
+    2. Security & Version Control
+    In a standard development workflow, the .env file is strictly private. It should be added to your .gitignore to prevent sensitive information from being leaked to version control systems.
+
+    Note: For evaluation purposes, a pre-configured .env file may be included in this repository to ensure the application is "ready-to-run" immediately upon download. For long-term use, please replace it with your personal key from WeatherStack.
+
+## 🏃 Running the App
+After configuration, simply run:
+
+    ```bash
+    python3 main.py
